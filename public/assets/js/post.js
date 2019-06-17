@@ -3,7 +3,7 @@ $("#add-burger").on("click", function(event) {
 
     // grab new burger
     var newBurger = {
-        burger: $("#burger-name").val().trim()
+        burger_name: $("#burger-name").val().trim()
     }
 
     // post request
@@ -11,6 +11,7 @@ $("#add-burger").on("click", function(event) {
         // reload page
         location.reload();
     })
+
 })
 
 $(".devour").on("click", function() {
