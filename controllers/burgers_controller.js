@@ -11,7 +11,10 @@ module.exports = router;
 // homepage - get all burgers, display index
 router.get("/", function(req, res) {
     // order alphabetically
-    db.Burger.findAll({ order: [['burger_name', 'ASC']] }).then(function (dbBurger) {
+    db.Burger.findAll({
+        order: [['burger_name', 'ASC']],
+        include: [ db.Customer ]
+    }).then(function (dbBurger) {
         var allBurgers = {
                 burgers: dbBurger
             };
@@ -28,7 +31,9 @@ router.get("/", function(req, res) {
 
 // API page - display all burgers
 router.get("/api/burgers", function(req, res) {
-    db.Burger.findAll({}).then(function (dbBurger) {
+    db.Burger.findAll({
+        include: [ db.Customer ]
+    }).then(function (dbBurger) {
         res.json(dbBurger);
     });
 })

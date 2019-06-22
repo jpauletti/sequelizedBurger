@@ -16,12 +16,21 @@ $("#add-burger").on("click", function(event) {
 
 })
 
+$(".eat").on("click", function(event) {
+    event.preventDefault();
+    $(this).toggleClass("hide");
+    $(this).next().toggleClass("hide");
+    $(this).next().next().toggleClass("hide");
+
+})
+
 $(".devour").on("click", function() {
     var id = $(this).data("id");
+    var eater = $(this).prev().find("#name").val().trim();
 
     // grab customer's name
     var newCustomer = {
-        name: "Bob",
+        name: eater,
         BurgerId: id
     };
 

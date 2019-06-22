@@ -1,33 +1,5 @@
-@media (min-width: 576px) {
-    .form-inline .form-control {
-        width: 350px;
-    }
-}
-
-@media (max-width: 767px) {
-    #devoured-parent {
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 575px) {
-    /* .col-sm-9 {
-        flex: 0 0 75%;
-        max-width: 75%;
-    }
-
-    .col-sm-3 {
-        flex: 0 0 25%;
-        max-width: 25%;
-    } */
-
-    .burger-name {
-        max-width: 66.66%;
-    }
-
-    .burger-btn {
-        max-width: 33.33%;
-    }
+.hide {
+    display: none;
 }
 
 ul {
@@ -43,10 +15,6 @@ li {
     padding-right: 0;
 }
 
-/* .burger-btn {
-    text-align: right;
-} */
-
 .devoured {
     text-decoration: line-through;
 }
@@ -56,3 +24,60 @@ li {
     background: lightgrey;
     border-radius: 3px;
 }
+
+#name {
+    width: 100%;
+}
+
+label[for="name"] {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 0.25rem;
+}
+
+
+@media (min-width: 576px) {
+    .form-inline .form-control {
+        width: 350px;
+    }
+}
+
+@media (max-width: 767px) {
+    #devoured-parent {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+
+    form {
+        max-width: 250px;
+    }
+
+    .queue-item {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .burger-name, .burger-btn {
+        text-align: center !important;
+    }
+
+    .burger-name {
+        text-align: center;
+    }
+
+    .burger-btn {
+        margin-top: 1rem!important;
+        margin-bottom: .25rem!important;
+    }
+
+    .add-a-burger {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+

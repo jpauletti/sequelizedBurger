@@ -14,7 +14,7 @@
 
     <div class="row mt-3 text-center">
         <div class="col-md-12">
-            <form class="form-inline justify-content-center">
+            <form class="form-inline justify-content-center add-a-burger">
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="burger-name" class="sr-only">Enter your burger</label>
                     <input type="text" class="form-control" id="burger-name" placeholder="Enter your burger">
@@ -36,7 +36,16 @@
             {{#unless this.devoured}}
             <div class="row align-items-center mb-2 queue-item">
                 <div class="col-md-8 col-sm-9 burger-name">{{this.id}}. {{this.burger_name}}</div>
-                <div class="col-md-4 col-sm-3 burger-btn text-right"><button type="button" data-id="{{this.id}}" class="btn btn-danger btn-sm devour">Devour</button></div>
+                <div class="col-md-4 col-sm-3 burger-btn text-right">
+                    <button type="button" class="btn btn-danger btn-sm eat">Eat Me >></button>
+                    <form id="enter-name" class="hide mx-auto">
+                        <div class="form-group">
+                            <label for="name">Eater's Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your name">
+                        </div>
+                    </form>
+                    <button type="button" data-id="{{this.id}}" class="btn btn-danger btn-sm devour hide">Devour</button>
+                </div>
             </div>
             {{/unless}}
             {{/each}}
@@ -45,7 +54,7 @@
         <div class="col-md-1"></div>
 
         {{!-- Devoured --}}
-        <div class="col-md-4" id="devoured-parent">
+        <div class="col-md-5" id="devoured-parent">
             <div class="row text-center">
                 <div class="col-md-12">
                     <h3 class="mb-3">Devoured</h3>
@@ -54,7 +63,7 @@
             {{#each burgers}}
             {{#if this.devoured}}
             <div class="row align-items-center mb-2 devoured">
-                <div class="col-md-12">{{this.id}}. {{this.burger_name}}</div>
+                <div class="col-md-12">{{this.id}}. {{this.burger_name}} [Eaten by: {{this.Customers.0.name}}]</div>
             </div>
             {{/if}}
             {{/each}}
