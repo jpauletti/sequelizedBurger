@@ -12,10 +12,24 @@ $("#add-burger").on("click", function(event) {
         location.reload();
     })
 
+    // $.post("/api/authors", authorData).then(getAuthors);
+
 })
 
 $(".devour").on("click", function() {
     var id = $(this).data("id");
+
+    // grab customer's name
+    var newCustomer = {
+        name: "Bob",
+        BurgerId: id
+    };
+
+    // add customer to customers table
+    $.post("/api/customers", newCustomer, function(data) {
+        console.log("new customer made");
+        console.log(data);
+    })
 
     // update db devoured value
     $.ajax("/api/burgers/" + id, {
@@ -24,4 +38,6 @@ $(".devour").on("click", function() {
         console.log("id: " + id + " devoured.");
         location.reload();
     });
+
+
 })

@@ -1,5 +1,4 @@
 var express = require("express");
-// var burger = require("../models/burger.js");
 var router = express.Router();
 
 var db = require("../models");
@@ -8,8 +7,11 @@ var db = require("../models");
 // export routes
 module.exports = router;
 
+
+// homepage - get all burgers, display index
 router.get("/", function(req, res) {
-    db.Burger.findAll({}).then(function (dbBurger) {
+    // order alphabetically
+    db.Burger.findAll({ order: [['burger_name', 'ASC']] }).then(function (dbBurger) {
         var allBurgers = {
                 burgers: dbBurger
             };
@@ -24,6 +26,7 @@ router.get("/", function(req, res) {
 })
 
 
+// API page - display all burgers
 router.get("/api/burgers", function(req, res) {
     db.Burger.findAll({}).then(function (dbBurger) {
         res.json(dbBurger);
@@ -31,6 +34,7 @@ router.get("/api/burgers", function(req, res) {
 })
 
 
+// POST route - add new burger
 router.post("/api/burgers", function(req, res) {
     var newBurger = req.body;
 
@@ -41,6 +45,18 @@ router.post("/api/burgers", function(req, res) {
 })
 
 
+// POST route - add new customer
+router.post("/api/customers", function(req, res) {
+    var newCustomer = req.body;
+
+    db.Customer.create(newCustomer).then(function (dbCustomer) {
+        console.log("new customer added");
+        res.status(201).end();
+    })
+})
+
+
+// UPDATE route - update burger
 router.put("/api/burgers/:id", function(req, res) {
     var id = req.params.id;
 
