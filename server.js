@@ -23,10 +23,6 @@ app.set("view engine", "handlebars");
 // import routes
 var routes = require("./controllers/burgers_controller.js");
 
-// require("./routes/html-routes.js")(app);
-// require("./routes/author-api-routes.js")(app);
-// require("./routes/post-api-routes.js")(app);
-
 app.use(routes);
 
 // sync sequelize models and start server

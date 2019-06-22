@@ -11,19 +11,19 @@ $("#add-burger").on("click", function(event) {
         // reload page
         location.reload();
     })
-
-    // $.post("/api/authors", authorData).then(getAuthors);
-
 })
 
+
+// show form for user to enter name
 $(".eat").on("click", function(event) {
     event.preventDefault();
     $(this).toggleClass("hide");
     $(this).next().toggleClass("hide");
     $(this).next().next().toggleClass("hide");
-
 })
 
+
+// eat the burger
 $(".devour").on("click", function() {
     var id = $(this).data("id");
     var eater = $(this).prev().find("#name").val().trim();
@@ -47,6 +47,4 @@ $(".devour").on("click", function() {
         console.log("id: " + id + " devoured.");
         location.reload();
     });
-
-
 })
