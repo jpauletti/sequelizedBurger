@@ -4,6 +4,9 @@ var PORT = process.env.PORT || 8080;
 
 var app = express();
 
+const Handlebars = require('handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+
 // static content - use public directory
 app.use(express.static("public"));
 
@@ -17,7 +20,10 @@ app.use(express.json());
 // set handlebars
 var handlebars = require("express-handlebars");
 
-app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.engine("handlebars", handlebars({
+    defaultLayout: "main",
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
 app.set("view engine", "handlebars");
 
 // import routes
